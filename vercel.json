@@ -1,1 +1,34 @@
-{"cleanUrls":true,"trailingSlash":false}
+{
+  "cleanUrls": true,
+  "trailingSlash": false,
+  "rewrites": [
+    {
+      "source": "/",
+      "has": [
+        {
+          "type": "header",
+          "key": "user-agent",
+          "value": "(?i).*(android|iphone|ipod|mobile).*"
+        }
+      ],
+      "missing": [
+        {
+          "type": "query",
+          "key": "site"
+        }
+      ],
+      "destination": "/links.html"
+    }
+  ],
+  "headers": [
+    {
+      "source": "/",
+      "headers": [
+        {
+          "key": "Vary",
+          "value": "User-Agent"
+        }
+      ]
+    }
+  ]
+}
